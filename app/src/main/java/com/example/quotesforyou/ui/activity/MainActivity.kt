@@ -1,4 +1,4 @@
-package com.example.quotesforyou
+package com.example.quotesforyou.ui.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
