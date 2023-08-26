@@ -19,12 +19,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //todo generate splash screen
         //todo generate unit test cases
-        //todo add logo
-        //todo setup hilt for getting api
         //todo implement home screen
-        //todo implement data load and pagination
         setContent {
             val viewModel : MainViewModel = hiltViewModel()
 
