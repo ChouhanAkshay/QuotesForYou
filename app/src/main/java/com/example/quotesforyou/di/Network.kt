@@ -42,7 +42,7 @@ class Network {
         return OkHttpClient.Builder()
             .addInterceptor(
                 HttpLoggingInterceptor().apply {
-                    level = HttpLoggingInterceptor.Level.NONE
+                    level = HttpLoggingInterceptor.Level.BODY
                 }
             )
             .addInterceptor{

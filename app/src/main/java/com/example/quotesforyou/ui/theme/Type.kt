@@ -31,7 +31,7 @@ val Typography = Typography(
     titleLarge = TextStyle(
         fontFamily = quickSand,
         fontWeight = FontWeight.Bold,
-        fontSize = 24.sp
+        fontSize = 20.sp
     ),
 
     titleSmall = TextStyle(

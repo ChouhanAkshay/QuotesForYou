@@ -32,7 +32,7 @@ fun Quote(
 ) {
     if (isLoading) {
         Box(
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(12.dp)
                 .height(250.dp)
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(16.dp))
@@ -40,7 +40,7 @@ fun Quote(
         )
     } else {
         Box(
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(12.dp)
                 .fillMaxWidth()
                 .shadow(
                     elevation = 5.dp,
@@ -49,7 +49,7 @@ fun Quote(
                 )
                 .background(color = quoteData.quoteBackgroundColor)
         ) {
-            Column(modifier = Modifier.padding(16.dp)) {
+            Column(modifier = Modifier.padding(12.dp)) {
                 Text(
                     text = quoteData.quoteContent.toString(),
                     textAlign = TextAlign.Center,

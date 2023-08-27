@@ -3,7 +3,9 @@ package com.example.quotesforyou.ui.base.viewmodel
 import androidx.annotation.CallSuper
 import androidx.lifecycle.ViewModel
 import com.example.quotesforyou.data.base.ApiResponse
+import com.example.quotesforyou.data.base.AppResponse
 import com.example.quotesforyou.data.base.BaseUseCaseUnWrapped
+import com.example.quotesforyou.data.base.BaseUseCaseUnWrappedWithInput
 import com.example.quotesforyou.data.base.Resource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -29,6 +31,18 @@ abstract class BaseViewModel : ViewModel() {
     ) {
         ioScope.launch {
             (useCase.processRequest()).collect {
+                response(it)
+            }
+        }
+    }
+
+    protected inline fun <I : AppResponse, O : ApiResponse> fetchDataFromCoroutinesWithInput(
+        useCase : BaseUseCaseUnWrappedWithInput<I,O>,
+        input : I,
+        crossinline response : (res : Resource<O>?) -> Unit
+    ) {
+        ioScope.launch {
+            (useCase.processRequest(input)).collect {
                 response(it)
             }
         }
