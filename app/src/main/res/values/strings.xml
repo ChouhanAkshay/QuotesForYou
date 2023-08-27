@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">QuotesForYou</string>
+    <string name="trending_quote">Trending Quote</string>
+    <string name="more_quotes">More Quotes</string>
 </resources>

@@ -18,7 +18,7 @@ object NavigationConstants{
 fun Navigation() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = NAV_LOADEING) {
+    NavHost(navController = navController, startDestination = NAV_HOME) {
         composable(NAV_LOADEING){
             loadingScreen {
                 navController.navigate(NAV_HOME)

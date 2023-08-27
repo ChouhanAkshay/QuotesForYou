@@ -22,8 +22,6 @@ class MainActivity : ComponentActivity() {
         //todo generate unit test cases
         //todo implement home screen
         setContent {
-            val viewModel : MainViewModel = hiltViewModel()
-
             QuotesForYouTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
