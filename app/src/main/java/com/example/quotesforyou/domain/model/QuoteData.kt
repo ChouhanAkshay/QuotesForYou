@@ -7,5 +7,6 @@ data class QuoteData(
     val id : String? = null,
     val quoteContent : String? = null,
     val quoteAutor : String? = null,
-    var quoteBackgroundColor : Color = Color(0xFFFFCC66)
+    var quoteBackgroundColor : Color = Color(0xFFFFCC66),
+    var quoteTextColor : Color = Color.Black
 ) : AppResponse

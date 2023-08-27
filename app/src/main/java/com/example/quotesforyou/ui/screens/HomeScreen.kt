@@ -1,6 +1,5 @@
 package com.example.quotesforyou.ui.screens
 
-import android.content.ClipData.Item
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,30 +20,25 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.LiveData
 import com.example.quotesforyou.R
-import com.example.quotesforyou.domain.model.QuoteData
 import com.example.quotesforyou.ui.common.Quote
 import com.example.quotesforyou.ui.common.roundProgressBar
+import com.example.quotesforyou.ui.theme.Black80
 import com.example.quotesforyou.ui.viewmodel.MainViewModel
 import com.example.quotesforyou.utils.Constants.emptyString
+import com.example.quotesforyou.utils.Constants.listOfColors
 import timber.log.Timber
-import kotlin.math.round
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -104,13 +98,13 @@ fun Content(
         item {
             Box(
                 modifier = Modifier.fillMaxWidth()
-            ){
+            ) {
                 Column(
                     //scrolls trending data up and down based on first item position of more quotes
                     modifier = Modifier.graphicsLayer {
                         scrolledY += lazyListState.firstVisibleItemScrollOffset - prevOffset
                         translationY = scrolledY * 0.5f
-                        alpha = (1 - (translationY/100))
+                        alpha = (1 - (translationY / 100))
                         Timber.e("startTransaction $translationY")
                         prevOffset = lazyListState.firstVisibleItemScrollOffset
                     }.background(MaterialTheme.colorScheme.primaryContainer)
@@ -122,6 +116,8 @@ fun Content(
                         color = MaterialTheme.colorScheme.secondary
                     )
                     getData.value?.let { data ->
+                        data.quoteBackgroundColor = Black80
+                        data.quoteTextColor = Color.White
                         Quote(isLoading = false, data)
                     } ?: run {
                         Quote(
@@ -172,7 +168,10 @@ fun Content(
                         mainViewModel.getNextPageItems()
                     }
 
-                    Quote(isLoading = false, list[index])
+                    val data = list[index]
+                    data.quoteBackgroundColor = listOfColors[index % 10]
+                    Timber.e("error $data")
+                    Quote(isLoading = false, data)
                 }
                 item {
                     if (loading.value == true) {

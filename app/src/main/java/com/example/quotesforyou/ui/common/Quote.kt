@@ -21,7 +21,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import com.example.quotesforyou.domain.model.QuoteData
 import com.example.quotesforyou.ui.extensions.shimmerEffect
+import com.example.quotesforyou.ui.theme.Black80
 import com.example.quotesforyou.ui.theme.QuotesForYouTheme
+import com.example.quotesforyou.ui.theme.VeryLightYellow
 
 @Composable
 fun Quote(
@@ -54,14 +56,16 @@ fun Quote(
                     text = quoteData.quoteContent.toString(),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth(),
-                    style = MaterialTheme.typography.titleLarge
+                    style = MaterialTheme.typography.titleLarge,
+                    color = quoteData.quoteTextColor
                 )
                 Spacer(Modifier.height(10.dp))
                 Text(
                     text = quoteData.quoteAutor.toString(),
                     textAlign = TextAlign.End,
                     modifier = Modifier.fillMaxWidth(),
-                    style = MaterialTheme.typography.titleSmall
+                    style = MaterialTheme.typography.titleSmall,
+                    color = quoteData.quoteTextColor
                 )
             }
         }
@@ -73,7 +77,7 @@ fun Quote(
 fun PreviewQuote() {
     QuotesForYouTheme {
         Quote(
-            isLoading = false, QuoteData(),
+            isLoading = false, QuoteData(quoteBackgroundColor = VeryLightYellow, quoteTextColor = Color.White),
             listOfColors = listOf(
                 Color(0xFFB8B5B5),
                 Color(0xFF8F8B8B),
