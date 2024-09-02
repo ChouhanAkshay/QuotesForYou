@@ -1,0 +1,7 @@
+//Benchmarking
+
+- add Benchmark module
+- add proguard file for benchmark to avoid offuscation
+- create new test function with startup matrix and other things.
+- to get the resource ids of items add modifier.semantics { testTagsAsResourceId = true } and add tags in reqired composable functions.
+- for swipe operation on list, can use fling function on list composable
