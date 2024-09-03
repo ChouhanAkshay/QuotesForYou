@@ -5,3 +5,16 @@
 - create new test function with startup matrix and other things.
 - to get the resource ids of items add modifier.semantics { testTagsAsResourceId = true } and add tags in reqired composable functions.
 - for swipe operation on list, can use fling function on list composable
+
+//baseline profile
+- add baseline profile module
+- add benchmarked tests
+- in baseline profile generator add flow from test
+- select :app release module
+- if any rules are missing in proguard add it by looking into missing_rules.pro file from generated build folder.
+- run to generate profiles.
+- Get generated baseline profile file and add it to root folder ( rename baseline-prof.txt)
+
+***** Testing baseline profiles
+- add compilation rules to microbenchmark tests. ( none - no profile) ( partial - profile)
+- run and verify the result
